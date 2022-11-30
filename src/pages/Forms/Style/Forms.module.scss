@@ -1,0 +1,175 @@
+@import "../../../globals.scss";
+
+.form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.3rem;
+  height: 100%;
+  .input-box {
+    position: relative;
+    width: 70%;
+    margin-bottom: 1rem;
+    input {
+      position: relative;
+      padding: 8px 10px;
+      width: 100%;
+      border: none;
+      border-radius: 6px;
+      outline: none;
+      background: transparent;
+      color: #fff;
+      font-size: 1.15rem;
+      letter-spacing: 0.05rem;
+      font-family: DMSans-Regular;
+
+      z-index: 2;
+      cursor: pointer;
+    }
+    span {
+      position: absolute;
+      left: 0;
+      padding: 10px 0;
+      pointer-events: none;
+      font-size: 1.15rem;
+      letter-spacing: 0.05rem;
+      color: #333;
+      transition: 0.5s;
+      font-weight: 500;
+    }
+    input:valid ~ span,
+    input:focus ~ span {
+      font-size: 1rem;
+      transform: translateY(-32px);
+    }
+
+    i {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      border-radius: 1.5px;
+      background: linear-gradient(50deg, rgb(0, 233, 136), rgb(0, 135, 202));
+      transition: 0.5s;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    input:valid ~ i,
+    input:focus ~ i {
+      height: 100%;
+      border-radius: 6px;
+      box-shadow: inset 0 0 5px rrgba(0, 0, 0, 0.164);
+    }
+  }
+
+  //example 02
+  .field {
+    position: relative;
+    height: 4rem;
+    width: 70%;
+    overflow: hidden;
+    background: transparent;
+    input {
+      background: transparent;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      order: 0;
+      outline: 0;
+      padding-top: 25px;
+      font-size: 1.15rem;
+      color: var(--bg);
+      font-family: DMSans-Regular;
+      padding-left: 5px;
+      border: none;
+      &:focus + .label-wrapper .label-text,
+      &:valid + .label-wrapper .label-text {
+        font-size: 1rem;
+        transform: translateY(-150%);
+      }
+
+      &:focus + .label-wrapper::after,
+      &:valid + .label-wrapper::after {
+        transform: translateX(0%);
+      }
+    }
+    .label-wrapper {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      pointer-events: none;
+      border-bottom: 4px solid;
+      border-image: linear-gradient(
+          to right,
+          rgb(0, 233, 136),
+          rgb(0, 135, 202)
+        )
+        1;
+
+      &::after {
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        bottom: -1px;
+        transform: translateX(-100%);
+        transition: transform 0.5s ease;
+      }
+    }
+
+    .label-text {
+      position: absolute;
+      bottom: 5px;
+      left: 0px;
+      transition: all 0.4s ease;
+      font-size: 1.15rem;
+    }
+  }
+
+  .btn-part {
+    width: 100%;
+    height: 15%;
+    margin-top: 1rem;
+    @include AllCenter;
+    input {
+      font-family: DMSans-Regular;
+      font-size: 1.2rem;
+      background: transparent;
+      position: relative;
+      padding: 0.7rem;
+      width: 25%;
+      min-width: 10rem;
+      cursor: pointer;
+      height: 100%;
+      border: 5px solid var(--green-bg);
+    //   border-image-slice: 1;
+    //   border-width: 5px;
+    //   border-image-source: linear-gradient(
+    //     50deg,
+    //     rgb(0, 233, 136),
+    //     rgb(0, 135, 202)
+    //   );
+      border-radius: 8px;
+      transition: .4s;
+
+      &:hover{
+        transform: scale(1.03);
+        transform: translateY(-3px);
+
+        
+      }
+
+      &:active{
+        transform: translateY(-1px);
+
+      }
+    }
+  }
+}
